@@ -1,0 +1,15 @@
+{
+  "name": "express_module",
+  "version": "1.0.0",
+  "description": "My First Wxpress Application",
+  "license": "ISC",
+  "author": "Oleksandr Nykytin",
+  "type": "commonjs",
+  "main": "expres_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
