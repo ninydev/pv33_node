@@ -19,7 +19,7 @@ export default function  VarsExample ()  {
 
 
     const addCNoSetter = () => {
-        c++;
+        // c++;
         console.log(c)
     }
 
