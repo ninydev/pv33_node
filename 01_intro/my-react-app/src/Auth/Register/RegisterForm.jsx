@@ -1,7 +1,9 @@
+import logger from "../../utils/logger.js";
+import {useRenderLogger} from "../../hooks/useRenderLogger.js";
 
 
 const RegisterForm = () => {
-    console.log("RegisterForm :: render");
+    useRenderLogger('RegisterForm');
 
     // useRef -?
     // useState -?
