@@ -10,7 +10,7 @@ const RegisterForm = () => {
         email: "",
         password: "",
         cf_password: "",
-        policy: true
+        policy: false
     });
 
     const [errors, setErrors] = useState([]);
@@ -70,7 +70,7 @@ const RegisterForm = () => {
                 ))
             }
             </ul>
-            <button type="submit">Register</button>
+            <button type="submit" disabled={errors.length !== 0}>Register</button>
             <button onClick={logFormData}>Echo</button>
         </form>
     )
