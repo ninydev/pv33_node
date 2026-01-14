@@ -12,6 +12,8 @@ export default function CatsListComponentList() {
         <div className="cats-page">
             <h1>The Cats</h1>
 
+            <div data-testid="cats-list-container"> Some Html Element</div>
+
             <DataFetcher isLoading={isLoading} error={error}>
                 <ul>
                     {cats.map(cat => (
