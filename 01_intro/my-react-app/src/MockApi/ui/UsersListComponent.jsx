@@ -14,6 +14,9 @@ export default function UsersListComponent() {
     const [page, setPage] = useState(1);
     const [limit, setLimit] = useState(10);
 
+    const [selectedUser, setSelectedUser] = useState(null);
+    const [currentAction, setCurrentAction] = useState('all'); // 'show' | 'edit' | 'all' | null
+
     useEffect(() => {
         const url = new URL(MOCK_API_USERS_URL);
         url.searchParams.append('page', page);
@@ -34,9 +37,8 @@ export default function UsersListComponent() {
                 setError(error);
                 logger.error('Error fetching users data:', error);
                 setIsLoading(false);
-            }
-            )
-    },[page, limit])
+            })
+    }, [page, limit])
 
     const nextPage = () => {
         if (users.length < limit) return;
@@ -64,11 +66,41 @@ export default function UsersListComponent() {
     }
 
 
-    if (isLoading) {return <>Loading...</>;}
-    if (error) {return <>Error: {error.message}</>;}
+    const handleShow = (id) => {
+        setSelectedUser(users.find(user => user.id === id));
+        setCurrentAction('show');
+        console.log('Show user:', id);
+    }
 
-    return(
-        <>
+    const handleClose = () => {
+        setSelectedUser(null);
+        setCurrentAction('all');
+    }
+
+    const handleEdit = (id) => {
+        setSelectedUser(users.find(user => user.id === id));
+        setCurrentAction('edit');
+        console.log('Edit user:', id);
+    }
+
+    if (isLoading) {
+        return <>Loading...</>;
+    }
+    if (error) {
+        return <>Error: {error.message}</>;
+    }
+
+    if (currentAction === 'show') return (<>
+            <div>User: {selectedUser.name}</div>
+            <button onClick={handleClose}>Close</button>
+        </>);
+
+    if (currentAction === 'edit') return (<>
+            <div>Edit user: {selectedUser.name}</div>
+            <button onClick={handleClose}>Close</button>
+        </>);
+
+    if (currentAction === 'all') return (<>
             <h1>Users List</h1>
             <div>
                 <a href="#" onClick={prevPage}>Prev</a> | {page} |
@@ -79,10 +111,11 @@ export default function UsersListComponent() {
                 </select>
             </div>
             <ul>
-                {users.map((user, index) => (
-                    <li key={user.id}>{user.name} | <a href="#" onClick={() => deleteUser(user.id)}>Delete</a></li>
-                ))}
+                {users.map((user, index) => (<li key={user.id}>{user.name}
+                        &#9745; ==&gt;
+                        | <a href="#" onClick={() => handleShow(user.id)}> Show </a>
+                        | <a href="#" onClick={() => handleEdit(user.id)}> Edit </a>
+                        | <a href="#" onClick={() => deleteUser(user.id)}>Delete</a></li>))}
             </ul>
-        </>
-    )
+        </>)
 }
