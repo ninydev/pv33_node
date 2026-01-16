@@ -117,5 +117,5 @@ export default function UsersListComponent() {
                         | <a href="#" onClick={() => handleEdit(user.id)}> Edit </a>
                         | <a href="#" onClick={() => deleteUser(user.id)}>Delete</a></li>))}
             </ul>
-        </>)
+        </>);
 }
