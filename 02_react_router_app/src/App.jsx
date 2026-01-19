@@ -5,6 +5,8 @@ import AboutPage from "./pages/AboutPage.jsx";
 import ContactPage from "./pages/ContactPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import CatsPage from "./pages/CatsPage.jsx";
+import BlogPage from "./pages/BlogPage.jsx";
+import SinglePostPage from "./pages/SinglePostPage.jsx";
 
 function App() {
 
@@ -16,6 +18,7 @@ function App() {
                 <li><Link to='/about'>About</Link></li>
                 <li><Link to='/contact'>Contact</Link></li>
                 <li><Link to='/cats'>Cats</Link></li>
+                <li><Link to='/blog'>Blog</Link></li>
             </ul>
         </nav>
 
@@ -25,6 +28,8 @@ function App() {
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/cats" element={<CatsPage />} />
+                <Route path="/blog" element={<BlogPage />} />
+                <Route path="/blog/:slug" element={<SinglePostPage />} />
 
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
