@@ -1,4 +1,7 @@
+import {usePageTitle} from "../hooks/usePageTitle.js";
+
 export default function ContactPage() {
+    usePageTitle('Contact Page');
   return (
     <div>
       <h1>Contact Page</h1>
