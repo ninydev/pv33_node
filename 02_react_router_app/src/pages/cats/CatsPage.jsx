@@ -1,5 +1,5 @@
-import {usePageTitle} from "../hooks/usePageTitle.js";
-import RandomCatComponent from "../components/CatsComponents/RandomCatComponent.jsx";
+import {usePageTitle} from "../../hooks/usePageTitle.js";
+import RandomCatComponent from "../../components/CatsComponents/RandomCatComponent.jsx";
 
 export default function CatsPage(){
 

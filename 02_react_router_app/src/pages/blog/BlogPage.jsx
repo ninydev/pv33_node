@@ -1,4 +1,4 @@
-import {usePageTitle} from "../hooks/usePageTitle.js";
+import {usePageTitle} from "../../hooks/usePageTitle.js";
 
 export default function BlogPage() {
     usePageTitle('Blog Page')
