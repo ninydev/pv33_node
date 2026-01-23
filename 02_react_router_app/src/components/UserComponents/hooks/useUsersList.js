@@ -27,5 +27,5 @@ export const useUsersList = () => {
     };
 
 
-    return { users, isLoading, error, page, setPage, limit, setLimit, refresh: loadUsers };
+    return { users, isLoading, setIsLoading, error, setError, page, setPage, limit, setLimit, refresh: loadUsers };
 };

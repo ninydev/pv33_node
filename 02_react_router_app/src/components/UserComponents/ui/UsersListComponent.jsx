@@ -1,13 +1,17 @@
 
 import { Link } from 'react-router-dom';
 import { useUsersList } from '../hooks/useUsersList';
+import {fetchUserDelete} from "../api/fetchUserDelete.js";
+import logger from "../../../utils/logger.js";
 
 export const UsersListComponent = () => {
     // 1. Деструктурируем ВСЕ, что возвращает хук
     const {
         users,
         isLoading,
+        setIsLoading,
         error,
+        setError,
         page,
         setPage,
         limit,
@@ -19,6 +23,20 @@ export const UsersListComponent = () => {
     const handlePrevPage = () => setPage((prev) => Math.max(prev - 1, 1));
     const handleNextPage = () => setPage((prev) => prev + 1);
     const handleLimitChange = (e) => setLimit(Number(e.target.value));
+
+    const handleDeleteUser = (userId) => {
+        logger.log(userId);
+        setIsLoading(true);
+        fetchUserDelete(userId)
+            .then(() => {
+                refresh();
+            })
+            .catch(err => {
+                logger.error(err);
+                setError(err)
+            })
+            .finally( () => setIsLoading(false));
+    }
 
     if (error) return <div style={{ color: 'red' }}>Ошибка: {error}</div>;
 
@@ -63,6 +81,7 @@ export const UsersListComponent = () => {
                                     <Link to={`${user.id}/edit`}>
                                         <button>✏️ Ред.</button>
                                     </Link>
+                                    <span href="#" onClick={() => {handleDeleteUser(user.id)}}> Del </span>
                                 </td>
                             </tr>
                         ))
