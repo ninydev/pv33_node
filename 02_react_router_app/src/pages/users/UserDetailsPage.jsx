@@ -1,11 +1,12 @@
 import {useParams} from "react-router-dom";
+import UserDetailsComponent from "../../components/UserComponents/ui/UserDetailsComponent.jsx";
 
 export default function UserDetailsPage() {
     const {id} = useParams();
     return(
         <div>
             <h1>User Details Page: {id}</h1>
-            <p>This is the user details page content.</p>
+            <UserDetailsComponent userId={id} />
         </div>
     )
 }

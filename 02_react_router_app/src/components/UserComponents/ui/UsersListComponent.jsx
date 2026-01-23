@@ -58,6 +58,7 @@ export const UsersListComponent = () => {
                                 </td>
                                 <td>{user.email}</td>
                                 <td>
+                                    <Link to={`${user.id}`}> View </Link>
                                     {/* Ссылка на редактирование */}
                                     <Link to={`${user.id}/edit`}>
                                         <button>✏️ Ред.</button>
