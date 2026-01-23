@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserFormComponent } from './UserFormComponent'; // Или где лежит ваша форма
-import { fetchUserCreate } from '../api/fetchUserCreate'; // Или где лежит ваш запрос
+import { fetchUserCreate } from '../api/fetchUserCreate';
+import logger from "../../../utils/logger.js"; // Или где лежит ваш запрос
 
 export default function UserCreateComponent() {
     // 1. Настройка навигации
@@ -35,7 +36,7 @@ export default function UserCreateComponent() {
         } catch (err) {
             // В. Ошибка
             // Если API выбросил исключение (throw new Error), ловим его здесь
-            console.error('Ошибка создания:', err);
+            logger.error('Ошибка создания:', err);
             setError(err.message || 'Не удалось создать пользователя');
         } finally {
             // Г. Завершение (в любом случае)

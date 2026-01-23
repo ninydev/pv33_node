@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import {DEFAULT_VALUES} from "../config.js";
 
@@ -6,6 +6,10 @@ import {DEFAULT_VALUES} from "../config.js";
 export const UserFormComponent = ({ initialData, onSubmit, isLoading }) => {
     // Инициализируем стейт: если есть initialData (редактирование) — берем её, иначе дефолт
     const [formData, setFormData] = useState(initialData || DEFAULT_VALUES);
+
+    useEffect(() => {
+        setFormData(initialData)
+    }, [initialData]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -19,6 +23,10 @@ export const UserFormComponent = ({ initialData, onSubmit, isLoading }) => {
         e.preventDefault();
         onSubmit(formData);
     };
+
+    if(!formData) {
+        return <p>Loading form data...</p>;
+    }
 
     return (
         <form
