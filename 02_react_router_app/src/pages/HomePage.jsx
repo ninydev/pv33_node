@@ -1,4 +1,5 @@
 import {usePageTitle} from "../hooks/usePageTitle.js";
+import FirstA11yComponent from "../components/A11yComponents/ver1/FirstA11yComponent.jsx";
 
 export default function HomePage() {
     usePageTitle('Home Page');
@@ -8,6 +9,7 @@ export default function HomePage() {
     <div>
       <h1>Welcome to the Home Page</h1>
       <p>This is the home page of our React Router app.</p>
+        <FirstA11yComponent />
     </div>
   );
 }
