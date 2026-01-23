@@ -1,3 +1,38 @@
+/* Базовые значения */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --primary-color: #3b82f6;
+  --font-scale: 1; /* Множитель размера шрифта */
+  --border-radius: 8px;
+}
+
+/* Применим переменные к телу страницы */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: calc(16px * var(--font-scale)); /* Масштабирование шрифта */
+  transition: all 0.3s ease; /* Плавность переходов */
+}
+
+/* Классы для элементов */
+.card {
+  border: 2px solid var(--text-color);
+  border-radius: var(--border-radius); /* Управляемое скругление */
+  padding: 20px;
+  margin-top: 20px;
+}
+
+button {
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  font-size: 1rem;
+}
+
 #root {
   max-width: 1280px;
   margin: 0 auto;

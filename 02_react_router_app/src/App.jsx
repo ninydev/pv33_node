@@ -11,11 +11,14 @@ import UsersListPage from "./pages/users/UsersListPage.jsx";
 import UserCreatePage from "./pages/users/UserCreatePage.jsx";
 import UserDetailsPage from "./pages/users/UserDetailsPage.jsx";
 import UserEditPage from "./pages/users/UserEditPage.jsx";
+import {ThemeProvider} from "./components/A11yComponents/useThemeContext.jsx";
+import AccessibilityPanel from "./components/A11yComponents/AccessibilityPanelComponent.jsx";
 
 function App() {
 
   return (
     <>
+        <ThemeProvider>
         <nav>
             <ul>
                 <li><Link to='/'>Home</Link></li>
@@ -25,6 +28,7 @@ function App() {
                 <li><Link to='/blog'>Blog</Link></li>
                 <li><Link to='/users'>Users</Link></li>
             </ul>
+            <AccessibilityPanel />
         </nav>
 
         <main>
@@ -46,7 +50,7 @@ function App() {
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </main>
-
+        </ThemeProvider>
     </>
   )
 }
