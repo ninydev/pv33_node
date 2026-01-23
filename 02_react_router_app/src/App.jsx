@@ -13,6 +13,7 @@ import UserDetailsPage from "./pages/users/UserDetailsPage.jsx";
 import UserEditPage from "./pages/users/UserEditPage.jsx";
 import {ThemeProvider} from "./components/A11yComponents/useThemeContext.jsx";
 import AccessibilityPanel from "./components/A11yComponents/AccessibilityPanelComponent.jsx";
+import AdminDashboardComponent from "./components/AdminComponents/AdminDashboardComponent.jsx";
 
 function App() {
 
@@ -22,18 +23,19 @@ function App() {
         <nav>
             <ul>
                 <li><Link to='/'>Home</Link></li>
+                <li><Link to='/admin'> Admin </Link></li>
                 <li><Link to='/about'>About</Link> <a href="/about"> ab </a> </li>
                 <li><Link to='/contact'>Contact</Link></li>
                 <li><Link to='/cats'>Cats</Link></li>
                 <li><Link to='/blog'>Blog</Link></li>
                 <li><Link to='/users'>Users</Link></li>
             </ul>
-            <AccessibilityPanel />
         </nav>
 
         <main>
             <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route path="/admin/*" element={<AdminDashboardComponent />} />
                 <Route path="/about" element={<AboutPage />} />
                 <Route path="/contact" element={<ContactPage />} />
                 <Route path="/cats" element={<CatsPage />} />
