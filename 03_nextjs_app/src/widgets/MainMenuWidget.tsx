@@ -7,6 +7,7 @@ export default function MainMenuWidget() {
                 <li><Link href="/">Home</Link></li>
                 <li><Link href="/about">About</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
+                <li><Link href="/users">Users</Link></li>
             </ul>
         </nav>
     </>)
