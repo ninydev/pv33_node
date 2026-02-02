@@ -8,6 +8,7 @@ export default function MainMenuWidget() {
                 <li><Link href="/about">About</Link></li>
                 <li><Link href="/contact">Contact</Link></li>
                 <li><Link href="/users">Users</Link></li>
+                <li><Link href="/ximilar">Ximilar</Link></li>
             </ul>
         </nav>
     </>)
