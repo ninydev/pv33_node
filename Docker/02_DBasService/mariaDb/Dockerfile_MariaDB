@@ -1,0 +1,4 @@
+FROM mariadb:10.11.3
+
+# Устанавливаем переменные окружения
+ENV MARIADB_ROOT_PASSWORD=Qwerty!23

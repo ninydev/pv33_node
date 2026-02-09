@@ -1,0 +1,10 @@
+# Базовый образ на Debian (~430 MB)
+FROM postgres:17
+
+# Переменные окружения (Environment Variables)
+# Обязательный пароль суперпользователя
+ENV POSTGRES_PASSWORD=my_secure_password
+# Создаем пользователя (вместо дефолтного postgres)
+ENV POSTGRES_USER=admin_user
+# Создаем базу данных при старте
+ENV POSTGRES_DB=company_erp

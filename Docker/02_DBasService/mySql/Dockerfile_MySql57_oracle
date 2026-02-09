@@ -1,0 +1,5 @@
+FROM mysql:5.7.44-oraclelinux7
+
+# Устанавливаем переменные окружения
+ENV MYSQL_ROOT_PASSWORD=Qwerty!23
+ENV MYSQL_DATABASE=my_app_db

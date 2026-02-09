@@ -1,0 +1,24 @@
+# Шаг 1: Берем чистую Ubuntu 24.04 (LTS)
+FROM ubuntu:24.04
+
+# Шаг 2: Указываем переменные, чтобы apt не задавал лишних вопросов при установке
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Шаг 3: Обновляем систему и ставим Postgres
+# Мы добавляем очистку кеша (rm -rf), чтобы хоть немного уменьшить размер
+RUN apt-get update && apt-get install -y \
+    postgresql \
+    postgresql-contrib \
+    && rm -rf /var/lib/apt/lists/*
+
+# Шаг 4: Переменные окружения (как мы делали раньше)
+ENV POSTGRES_PASSWORD=password123
+
+# Шаг 5: Переключаемся на пользователя postgres (он создается автоматически при установке)
+USER postgres
+
+# Открываем порт
+EXPOSE 5432
+
+# Команда запуска (в Ubuntu пути к бинарникам Postgres выглядят так)
+CMD ["/usr/lib/postgresql/16/bin/postgres", "-D", "/var/lib/postgresql/16/main", "-c", "config_file=/etc/postgresql/16/main/postgresql.conf"]
