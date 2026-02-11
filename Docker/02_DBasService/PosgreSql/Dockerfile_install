@@ -9,7 +9,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y \
     postgresql \
     postgresql-contrib \
+    mc \
     && rm -rf /var/lib/apt/lists/*
+
+
 
 # Шаг 4: Переменные окружения (как мы делали раньше)
 ENV POSTGRES_PASSWORD=password123
