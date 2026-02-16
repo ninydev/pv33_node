@@ -1,0 +1,9 @@
+services:
+  db-posgres-pv33:
+    image: postgres:17
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: QweAsdZxc!23
+      POSTGRES_DB: db_name
