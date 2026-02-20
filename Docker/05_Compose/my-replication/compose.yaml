@@ -1,0 +1,33 @@
+services:
+  mysql-master:
+    image: mysql:8.0
+    container_name: mysql-master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: mydb
+    volumes:
+      - ./master/master.cnf:/etc/mysql/conf.d/master.cnf
+      - ./master/setup.sql:/docker-entrypoint-initdb.d/setup.sql
+
+  mysql-slave:
+    image: mysql:8.0
+    container_name: mysql-slave
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+    volumes:
+      - ./slave/slave.cnf:/etc/mysql/conf.d/slave.cnf
+      - ./slave/setup.sh:/docker-entrypoint-initdb.d/setup.sh
+    depends_on:
+      - mysql-master
+
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      # Настройка phpMyAdmin для работы с несколькими серверами
+      PMA_HOSTS: mysql-master,mysql-slave
+      PMA_ARBITRARY: 1 # Позволяет вводить хост вручную при логине, если нужно
