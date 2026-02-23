@@ -1,0 +1,11 @@
+services:
+  node-api-first:
+    build: ./backend/api
+    container_name: node-api-first
+    ports:
+      - "3000:3000"
+    environment:
+      SERVER_NAME: "First-Node-Server"
+      PORT: 3000
+    volumes:
+      - ./backend/api/src:/usr/src/app
