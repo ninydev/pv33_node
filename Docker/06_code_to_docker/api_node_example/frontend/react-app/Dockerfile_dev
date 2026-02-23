@@ -1,0 +1,19 @@
+FROM node:24-alpine
+
+WORKDIR /app
+
+# Копируем файлы зависимостей
+COPY src/package*.json ./
+
+# Устанавливаем зависимости
+RUN npm install
+
+# Копируем остальной код (хотя в dev он перекроется томом)
+COPY src/ .
+
+# Порт, который использует Vite по умолчанию
+EXPOSE 5173
+
+# Запускаем Vite с флагом --host
+# Без --host Docker не сможет пробросить порт наружу
+CMD ["npm", "run", "dev", "--", "--host"]

@@ -1,5 +1,27 @@
 services:
 
+  react-admin-prod:
+    build:
+      context: ./frontend/react-app
+      dockerfile: Dockerfile_prod      # <--- Стандартный файл сборки
+    container_name: react-admin-prod
+    ports:
+      - "8082:80"                 # Прод будет на другом порту для теста
+
+  react-admin-dev:
+    build:
+      context: ./frontend/react-app
+      dockerfile: Dockerfile_dev # <--- Указываем файл для дева
+    container_name: react-admin-dev
+    ports:
+      - "5173:5173"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./frontend/react-app/src:/app         # Прокидываем код
+      - /app/node_modules              # Анонимный том (важно!)
+
+
   storage-static:
     image: nginx:alpine
     container_name: storage-static
