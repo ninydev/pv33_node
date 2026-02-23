@@ -9,3 +9,13 @@ services:
       PORT: 3000
     volumes:
       - ./backend/api/src:/usr/src/app
+  node-api-second:
+    build: ./backend/api
+    container_name: node-api-second
+    ports:
+      - "3001:3000"
+    environment:
+      SERVER_NAME: "Second-Node-Server"
+      PORT: 3000
+    volumes:
+      - ./backend/api/src:/usr/src/app
