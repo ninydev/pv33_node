@@ -11,6 +11,7 @@ const server = http.createServer((req, res) => {
     // Формируем ответ
     const data = {
         status: "OK",
+        addCode: "This is additional code",
         server_name: SERVER_NAME,
         port: PORT,
         url: req.url, // какой путь запросили
