@@ -1,19 +1,36 @@
 ﻿services:
-  publicapi:
+  
+  pv33.dbmysql:
+    container_name: pv33.dbmysql
+    image: mysql:9.6
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+  
+  pv33.publicapi:
     image: publicapi
     build:
       context: .
       dockerfile: PublicApi/Dockerfile
+    environment:
+      ConnectionStrings__DefaultConnection: "${MYSQL_CONNECTION_STRING}"
 
-  adminapi:
+  pv33.adminapi:
     image: adminapi
     build:
       context: .
       dockerfile: AdminApi/Dockerfile
-
-  notificationsapi:
+    environment:
+      ConnectionStrings__DefaultConnection: "${MYSQL_CONNECTION_STRING}"
+      
+  pv33.notificationsapi:
     image: notificationsapi
     build:
       context: .
       dockerfile: NotificationsApi/Dockerfile
-
+    environment:
+      ConnectionStrings__DefaultConnection: "${MYSQL_CONNECTION_STRING}"
