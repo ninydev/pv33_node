@@ -1,0 +1,19 @@
+﻿services:
+  publicapi:
+    image: publicapi
+    build:
+      context: .
+      dockerfile: PublicApi/Dockerfile
+
+  adminapi:
+    image: adminapi
+    build:
+      context: .
+      dockerfile: AdminApi/Dockerfile
+
+  notificationsapi:
+    image: notificationsapi
+    build:
+      context: .
+      dockerfile: NotificationsApi/Dockerfile
+
